@@ -1,0 +1,20 @@
+{
+  "Comment": "Create/Update a latency-based CNAME record for a federated Deployment",
+  "Changes": [
+    {
+      "Action": "UPSERT",
+      "ResourceRecordSet": {
+        "Name": "nginx.k8s.example.com",
+        "Type": "CNAME",
+        "Region": "ap-northeast-1",
+        "TTL": 300,
+        "SetIdentifier": "ap-northeast-1",
+        "ResourceRecords": [
+          {
+            "Value": " a197b40c9438c11e8a95a068c009ec4b-1437356461.ap-northeast-1.elb.amazonaws.com "
+          }
+        ]
+      }
+    }
+  ]
+}

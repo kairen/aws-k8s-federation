@@ -1,0 +1,6 @@
+#!/bin/bash
+
+source .env
+set -eux
+
+kubectl --context=${AP_NORTHEAST_CONTEXT} $@

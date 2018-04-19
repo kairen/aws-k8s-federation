@@ -1,0 +1,6 @@
+#!/bin/bash
+
+source .env
+set -eux
+
+kubectl --context=${US_WEST_CONTEXT} $@
