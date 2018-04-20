@@ -1,5 +1,5 @@
 # Setup Kubernetes Federation on AWS
-In this lab, we will deploy Kubernetes clusters in three different AWS regions, and then setup Kubernetes Federation Between clusters. When federation has been created we will create a federated deployment and service for nginx. And finally, we will create latency-based DNS records in Route 53, one for each cluster region.
+In this lab, we will deploy Kubernetes clusters in three different AWS regions, and then setup Kubernetes Federation between clusters. When federation has been created we will create a federated deployment and service for nginx. And finally, we will create latency-based DNS records in Route 53, one for each cluster region.
 
 ![](/img/fed-clusters.png)
 
