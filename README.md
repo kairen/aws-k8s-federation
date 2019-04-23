@@ -4,14 +4,14 @@ In this lab, we will deploy Kubernetes clusters in three different AWS regions, 
 ![](/img/fed-clusters.png)
 
 ## Prerequisites
-* We will deploy clusters in different AWS regions:
+* We need to deploy three Kubernetes clusters in different AWS regions. e.g.:
   * US West: **Oregon(us-west-2)**
   * US East: **Ohio(us-east-2)**
   * Asia: **Tokyo(ap-northeast-1)**
 * Install the following tools on the host:
   * [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/): Using kubectl, you can inspect cluster resources; create, delete, and update components.
-  * [kubefed](https://kubernetes.io/docs/tasks/federation/set-up-cluster-federation-kubefed/): Helps you to deploy a new Kubernetes cluster federation control plane, and to add clusters to or remove clusters from an existing federation control plane.
-  > if OS is OS X, you need build from [Federation](https://github.com/kubernetes/federation) source code.
+  * [helm](https://helm.sh/docs/using_helm/#installing-helm): Using helm to install federation-v2 components by [chart](https://github.com/kubernetes-sigs/federation-v2/tree/master/charts/federation-v2).
+  * [kubefed v2](https://github.com/kubernetes-sigs/federation-v2): Helps you to deploy a new Kubernetes cluster federation control plane, and to add clusters to or remove clusters from an existing federation control plane.
 
   * [kops](https://github.com/kubernetes/kops): Production Grade K8s Installation, Upgrades, and Management.
   * [aws](https://aws.amazon.com/cli/?nc1=h_ls): The AWS Command Line Interface (CLI) is a unified tool to manage your AWS services.
