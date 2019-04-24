@@ -15,12 +15,10 @@ metadata:
   namespace: test
 spec:
   targetKind: FederatedDeployment
-  totalReplicas: 10
+  totalReplicas: 15
   clusters:
     "*":
-      minReplicas: 2
-      maxReplicas: 10
-      weight: 2
+      weight: 1
     ap-northeast:
       minReplicas: 1
       maxReplicas: 3
