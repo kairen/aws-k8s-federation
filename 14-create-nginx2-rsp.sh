@@ -18,7 +18,7 @@ spec:
   totalReplicas: 15
   clusters:
     "*":
-      weight: 1
+      weight: 2
     ap-northeast:
       minReplicas: 1
       maxReplicas: 3
