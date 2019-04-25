@@ -10,7 +10,7 @@ kubectl config use-context ${FED_CONTEXT}
 kubectl create ns kube-multicluster-public
 
 # Deploy the Federation control plane to the host cluster
-git clone https://github.com/kubernetes-sigs/federation-v2.git
+git clone https://github.com/kubernetes-sigs/federation-v2.git -b v0.0.8
 cd federation-v2
 
 helm install charts/federation-v2 \
