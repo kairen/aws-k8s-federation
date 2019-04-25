@@ -1,19 +1,21 @@
-# Setup Kubernetes Federation on AWS
-In this lab, we will deploy Kubernetes clusters in three different AWS regions, and then setup Kubernetes Federation between clusters. When federation has been created we will create a federated deployment and service for nginx. And finally, we will create latency-based DNS records in Route 53, one for each cluster region.
+# Setup Kubernetes Federation `V2` on AWS
+In this lab, we will deploy the Kubernetes cluster in three different AWS regions, and then setup Federation between clusters. When federation has been created we will create a federated deployment and service for NGINX. And finally, we will create latency-based DNS records in Route 53, one for each cluster region.
 
-![](/img/fed-clusters.png)
+![](/img/fed-cluster.png)
 
 ## Prerequisites
-* We will deploy clusters in different AWS regions:
+* We need to deploy Kubernetes cluster in different AWS regions. e.g.:
   * US West: **Oregon(us-west-2)**
   * US East: **Ohio(us-east-2)**
   * Asia: **Tokyo(ap-northeast-1)**
 * Install the following tools on the host:
   * [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/): Using kubectl, you can inspect cluster resources; create, delete, and update components.
-  * [kubefed](https://kubernetes.io/docs/tasks/federation/set-up-cluster-federation-kubefed/): Helps you to deploy a new Kubernetes cluster federation control plane, and to add clusters to or remove clusters from an existing federation control plane.
-  > if OS is OS X, you need build from [Federation](https://github.com/kubernetes/federation) source code.
-
+  * [helm](https://helm.sh/docs/using_helm/#installing-helm): Using helm to install federation-v2 components by the [chart](https://github.com/kubernetes-sigs/federation-v2/tree/master/charts/federation-v2).
+  * [kubefed v2](https://github.com/kubernetes-sigs/federation-v2): Helps you to join/unjon clusters from an existing federation control plane.
   * [kops](https://github.com/kubernetes/kops): Production Grade K8s Installation, Upgrades, and Management.
+  
+  > Federation v2 can be deployed to and manage clusters running Kubernetes `v1.11` or greater.
+
   * [aws](https://aws.amazon.com/cli/?nc1=h_ls): The AWS Command Line Interface (CLI) is a unified tool to manage your AWS services.
 * We will be using Amazon AWS as the IaaS provider:
   * IAM: Provide identity and access management.

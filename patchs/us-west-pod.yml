@@ -1,0 +1,6 @@
+spec:
+  containers:
+  - name: nginx
+    image: kairen/nginx:slowpoke
+    
+      
