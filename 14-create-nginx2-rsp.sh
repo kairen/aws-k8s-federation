@@ -8,7 +8,7 @@ kubectl config use-context ${FED_CONTEXT}
 
 # Create a nginx2 rsp
 cat <<EOF | kubectl apply -f -
-apiVersion: scheduling.federation.k8s.io/v1alpha1
+apiVersion: scheduling.kubefed.k8s.io/v1alpha1
 kind: ReplicaSchedulingPreference
 metadata:
   name: nginx2

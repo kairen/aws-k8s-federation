@@ -10,8 +10,8 @@ In this lab, we will deploy the Kubernetes cluster in three different AWS region
   * Asia: **Tokyo(ap-northeast-1)**
 * Install the following tools on the host:
   * [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/): Using kubectl, you can inspect cluster resources; create, delete, and update components.
-  * [helm](https://helm.sh/docs/using_helm/#installing-helm): Using helm to install federation-v2 components by the [chart](https://github.com/kubernetes-sigs/federation-v2/tree/master/charts/federation-v2).
-  * [kubefed v2](https://github.com/kubernetes-sigs/federation-v2): Helps you to join/unjon clusters from an existing federation control plane.
+  * [helm](https://helm.sh/docs/using_helm/#installing-helm): Using helm to install federation-v2 components by the [chart](https://github.com/kubernetes-sigs/kubefed/tree/master/charts/kubefed).
+  * [kubefedctl](https://github.com/kubernetes-sigs/kubefed): Helps you to join/unjon clusters from an existing federation control plane.
   * [kops](https://github.com/kubernetes/kops): Production Grade K8s Installation, Upgrades, and Management.
   
   > Federation v2 can be deployed to and manage clusters running Kubernetes `v1.11` or greater.

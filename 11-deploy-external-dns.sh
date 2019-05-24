@@ -12,7 +12,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: external-dns
-  namespace: federation-system
+  namespace: kube-federation-system
 ---
 apiVersion: rbac.authorization.k8s.io/v1beta1
 kind: ClusterRole
@@ -31,7 +31,7 @@ rules:
 - apiGroups: [""]
   resources: ["nodes"]
   verbs: ["list", "get", "watch"]
-- apiGroups: ["multiclusterdns.federation.k8s.io"]
+- apiGroups: ["multiclusterdns.kubefed.k8s.io"]
   resources: ["*"]
   verbs: ["*"]
 ---
@@ -46,13 +46,13 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: external-dns
-  namespace: federation-system
+  namespace: kube-federation-system
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: external-dns
-  namespace: federation-system
+  namespace: kube-federation-system
   labels:
     k8s-app: external-dns
 spec:
@@ -86,6 +86,6 @@ spec:
         - --log-level=debug
         - --txt-prefix=cname
         - --source=crd
-        - --crd-source-apiversion=multiclusterdns.federation.k8s.io/v1alpha1
+        - --crd-source-apiversion=multiclusterdns.kubefed.k8s.io/v1alpha1
         - --crd-source-kind=DNSEndpoint
 EOF

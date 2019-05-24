@@ -14,17 +14,17 @@ metadata:
   name: test
 EOF
 
-# Create a federated namespace called `test-fns`
+# Create a federated namespace
 cat <<EOF | kubectl apply -f -
-apiVersion: types.federation.k8s.io/v1alpha1
+apiVersion: types.kubefed.k8s.io/v1beta1
 kind: FederatedNamespace
 metadata:
   name: test
   namespace: test
 spec:
   placement:
-    clusterNames:
-    - ap-northeast
-    - us-east
-    - us-west
+    clusters:
+    - name: ap-northeast
+    - name: us-east
+    - name: us-west
 EOF

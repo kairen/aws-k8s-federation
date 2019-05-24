@@ -6,20 +6,16 @@ set -eux
 # Switch to master cluster
 kubectl config use-context ${FED_CONTEXT}
 
-# First you'll need to create the reserved namespace for registering clusters with the cluster registry:
-kubectl create ns kube-multicluster-public
-
 # Deploy the Federation control plane to the host cluster
-git clone https://github.com/kubernetes-sigs/federation-v2.git -b v0.0.8
-cd federation-v2
+git clone https://github.com/kubernetes-sigs/kubefed.git -b v0.1.0-rc1
+cd kubefed
 
-helm install charts/federation-v2 \
-  --name federation-v2 \
-  --namespace federation-system \
-  --set clusterregistry.enabled=true
+helm install charts/kubefed \
+  --name kubefed \
+  --namespace kube-federation-system
 
 # Remove unnecessary files
 cd ../
-rm -rf federation-v2
+rm -rf kubefed
 
-kubectl -n federation-system get po -o wide
+kubectl -n kube-federation-system get po -o wide

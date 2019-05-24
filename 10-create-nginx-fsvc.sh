@@ -8,7 +8,7 @@ kubectl config use-context ${FED_CONTEXT}
 
 # Create a service for NGINX deployment
 cat <<EOF | kubectl apply -f -
-apiVersion: types.federation.k8s.io/v1alpha1
+apiVersion: types.kubefed.k8s.io/v1beta1
 kind: FederatedService
 metadata:
   name: nginx
@@ -23,8 +23,8 @@ spec:
         - name: http
           port: 80
   placement:
-    clusterNames:
-    - ap-northeast
-    - us-east
-    - us-west
+    clusters:
+    - name: ap-northeast
+    - name: us-east
+    - name: us-west
 EOF

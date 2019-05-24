@@ -8,7 +8,7 @@ kubectl config use-context ${FED_CONTEXT}
 
 # Create a nginx2 deployment
 cat <<EOF | kubectl apply -f -
-apiVersion: types.federation.k8s.io/v1alpha1
+apiVersion: types.kubefed.k8s.io/v1beta1
 kind: FederatedDeployment
 metadata:
   name: nginx2
@@ -32,9 +32,9 @@ spec:
           - image: nginx
             name: nginx
   placement:
-    clusterNames:
-    - ap-northeast
-    - us-east
-    - us-west
+    clusters:
+    - name: ap-northeast
+    - name: us-east
+    - name: us-west
 EOF
 
