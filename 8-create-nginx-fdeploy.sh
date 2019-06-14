@@ -7,7 +7,7 @@ set -eux
 kubectl config use-context ${FED_CONTEXT}
 
 # Create a nginx deployment
-cat <<EOF | kubectl --context=${FED_CONTEXT} apply -f -
+cat <<EOF | kubectl apply -f -
 apiVersion: types.kubefed.k8s.io/v1beta1
 kind: FederatedDeployment
 metadata:
