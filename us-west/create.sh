@@ -31,13 +31,13 @@ spec:
   etcdClusters:
   - cpuRequest: 200m
     etcdMembers:
-    - instanceGroup: master-us-west-2a
+    - instanceGroup: master-${US_WEST_ZONE}
       name: a
     memoryRequest: 100Mi
     name: main
   - cpuRequest: 100m
     etcdMembers:
-    - instanceGroup: master-us-west-2a
+    - instanceGroup: master-${US_WEST_ZONE}
       name: a
     memoryRequest: 100Mi
     name: events
@@ -58,9 +58,9 @@ spec:
   - 0.0.0.0/0
   subnets:
   - cidr: 172.20.32.0/19
-    name: us-west-2a
+    name: ${US_WEST_ZONE}
     type: Public
-    zone: us-west-2a
+    zone: ${US_WEST_ZONE}
   topology:
     dns:
       type: Public
@@ -72,17 +72,17 @@ kind: InstanceGroup
 metadata:
   labels:
     kops.k8s.io/cluster: ${US_WEST_CONTEXT}
-  name: master-us-west-2a
+  name: master-${US_WEST_ZONE}
 spec:
   image: kope.io/k8s-1.11-debian-stretch-amd64-hvm-ebs-2018-08-17
   machineType: ${MASTER_FLAVOR}
   maxSize: ${MASTER_COUNT}
   minSize: ${MASTER_COUNT}
   nodeLabels:
-    kops.k8s.io/instancegroup: master-us-west-2a
+    kops.k8s.io/instancegroup: master-${US_WEST_ZONE}
   role: Master
   subnets:
-  - us-west-2a
+  - ${US_WEST_ZONE}
 ---
 apiVersion: kops/v1alpha2
 kind: InstanceGroup
@@ -99,7 +99,7 @@ spec:
     kops.k8s.io/instancegroup: nodes
   role: Node
   subnets:
-  - us-west-2a
+  - ${US_WEST_ZONE}
 EOF
 
 kops create secret --name ${US_WEST_CONTEXT} \
@@ -109,7 +109,7 @@ kops create secret --name ${US_WEST_CONTEXT} \
 # kops create cluster \
 #   --name=${US_WEST_CONTEXT} \
 #   --state=s3://${US_WEST_BUCKET_NAME} \
-#   --zones="${US_WEST_REGION}${ZONE}" \
+#   --zones="${US_WEST_ZONE}" \
 #   --master-size=${MASTER_FLAVOR} \
 #   --node-size=${NODE_FLAVOR} \
 #   --node-count=${NODE_COUNT} \

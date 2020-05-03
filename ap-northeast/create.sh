@@ -68,13 +68,13 @@ spec:
   etcdClusters:
   - cpuRequest: 200m
     etcdMembers:
-    - instanceGroup: master-ap-northeast-1a
+    - instanceGroup: master-${AP_NORTHEAST_ZONE}
       name: a
     memoryRequest: 100Mi
     name: main
   - cpuRequest: 100m
     etcdMembers:
-    - instanceGroup: master-ap-northeast-1a
+    - instanceGroup: master-${AP_NORTHEAST_ZONE}
       name: a
     memoryRequest: 100Mi
     name: events
@@ -95,9 +95,9 @@ spec:
   - 0.0.0.0/0
   subnets:
   - cidr: 172.20.32.0/19
-    name: ap-northeast-1a
+    name: ${AP_NORTHEAST_ZONE}
     type: Public
-    zone: ap-northeast-1a
+    zone: ${AP_NORTHEAST_ZONE}
   topology:
     dns:
       type: Public
@@ -109,17 +109,17 @@ kind: InstanceGroup
 metadata:
   labels:
     kops.k8s.io/cluster: ${AP_NORTHEAST_CONTEXT}
-  name: master-ap-northeast-1a
+  name: master-${AP_NORTHEAST_ZONE}
 spec:
   image: kope.io/k8s-1.11-debian-stretch-amd64-hvm-ebs-2018-08-17
   machineType: ${MASTER_FLAVOR}
   maxSize: ${MASTER_COUNT}
   minSize: ${MASTER_COUNT}
   nodeLabels:
-    kops.k8s.io/instancegroup: master-ap-northeast-1a
+    kops.k8s.io/instancegroup: master-${AP_NORTHEAST_ZONE}
   role: Master
   subnets:
-  - ap-northeast-1a
+  - ${AP_NORTHEAST_ZONE}
 ---
 apiVersion: kops/v1alpha2
 kind: InstanceGroup
@@ -136,7 +136,7 @@ spec:
     kops.k8s.io/instancegroup: nodes
   role: Node
   subnets:
-  - ap-northeast-1a
+  - ${AP_NORTHEAST_ZONE}
 EOF
 
 kops create secret --name ${AP_NORTHEAST_CONTEXT} \
@@ -146,7 +146,7 @@ kops create secret --name ${AP_NORTHEAST_CONTEXT} \
 # kops create cluster \
 #   --name=${AP_NORTHEAST_CONTEXT} \
 #   --state=s3://${AP_NORTHEAST_BUCKET_NAME} \
-#   --zones="${AP_NORTHEAST_REGION}${ZONE}" \
+#   --zones="${AP_NORTHEAST_ZONE}" \
 #   --master-size=${MASTER_FLAVOR} \
 #   --node-size=${NODE_FLAVOR} \
 #   --node-count=${NODE_COUNT} \
